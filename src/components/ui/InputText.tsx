@@ -1,19 +1,14 @@
-import ExclamationBadgeIcon from '../icons/ExclamationIcon';
+// import useFormContext from '../../hooks/useFormContext';
+import ExclamationBadgeIcon from '../../icons/ExclamationIcon';
 
 interface IInputTextProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
-  value: string;
   state: 'default' | 'active' | 'error';
   type: 'text' | 'email';
   error?: string;
 }
 
-function InputText({
-  state = 'default',
-  type,
-  error,
-  ...props
-}: IInputTextProps) {
+function InputText({ type, state, error, ...props }: IInputTextProps) {
   const variants: Record<typeof state, string> = {
     default: 'border border-accent bg-white',
     active: 'border-2 border-primary bg-white',

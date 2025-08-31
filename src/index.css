@@ -6,6 +6,9 @@
   --color-primary-text: #000853;
   --color-secondary-text: #898DA9;
   --color-arrow-text: #CBB6E5;
+  --color-button-inactive: #CBB6E5;
+  --color-button-default: #761BE4;
+  --color-button-hover: #6A19CD;
   --color-primary: #761BE4;
   --color-secondary: #F0EAF8;
   --color-accent: #CBB6E5;

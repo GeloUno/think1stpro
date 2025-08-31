@@ -66,20 +66,25 @@ export default function FieldCalendarTime({
           getDayInfo={resolveDayInfo}
         />
 
-        {selectedInfo?.type === 'OBSERVANCE' && (
-          <div
-            className="mt-2 flex items-center gap-2"
-            role="status"
-            aria-live="polite"
-          >
-            <InfoCircleIcon className="h-4 w-4 text-accent" title={undefined} />
-            <span className="text-sm text-primary-text">
-              {selectedInfo.name
-                ? `It is ${selectedInfo.name}.`
-                : 'It is an observance day.'}
-            </span>
-          </div>
-        )}
+        <div className="mt-2 h-6">
+          {selectedInfo?.type === 'OBSERVANCE' && (
+            <div
+              className="flex h-full items-center gap-2"
+              role="status"
+              aria-live="polite"
+            >
+              <InfoCircleIcon
+                className="h-4 w-4 text-accent"
+                title={undefined}
+              />
+              <span className="text-sm text-primary-text truncate">
+                {selectedInfo.name
+                  ? `It is ${selectedInfo.name}.`
+                  : 'It is an observance day.'}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
 
       <FieldTime

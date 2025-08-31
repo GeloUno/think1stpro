@@ -18,9 +18,9 @@ function InputSlider({ min, max, step, defaultValue }: InputSliderProps) {
   };
   return (
     <div className="w-full">
-      <div className="flex items-end justify-between mb-1">
-        <div className="text-xs mb-1 text-secondary-text">{min}</div>
-        <span className="text-xs text-secondary-text">{max}</span>
+      <div className="flex items-end justify-between mb-0 translate-y-[8px]">
+        <div className="text-xs mb-0 text-secondary-text">{min}</div>
+        <div className="text-xs mb-0 text-secondary-text">{max}</div>
       </div>
       <div
         className="slider-wrap"

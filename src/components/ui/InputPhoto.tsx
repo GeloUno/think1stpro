@@ -84,7 +84,7 @@ function InputPhoto({
           if (!disabled) handleFiles(e.dataTransfer.files);
         }}
         className={[
-          'relative w-full rounded-xl border px-4 py-6 transition',
+          'relative w-full rounded-md border px-4 py-6 transition',
           'bg-white/70',
           drag ? 'border-primary ring-2 ring-primary' : 'border-accent',
           disabled
@@ -107,9 +107,15 @@ function InputPhoto({
               type="button"
               onClick={handleStopPropagation}
               aria-label="Delete file"
-              className="ml-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full hover:opacity-90 focus:outline-none cursor-pointer focus:ring-2 focus:ring-primary/50"
+              className="ml-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full cursor-pointer
+             text-primary-text hover:text-error-primary transition-colors
+             focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
             >
-              <CloseCircleIcon size={20} className="text-primary-text" />
+              <CloseCircleIcon
+                size={20}
+                title={undefined}
+                className="pointer-events-none"
+              />
             </button>
           </div>
         )}

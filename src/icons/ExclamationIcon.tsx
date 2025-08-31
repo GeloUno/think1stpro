@@ -6,7 +6,7 @@ export interface ExclamationBadgeIconProps
   title?: string;
 }
 
-export default function ExclamationBadgeIcon({
+export default function ExclamationIcon({
   size = 16,
   className,
   title = 'Exclamation badge',

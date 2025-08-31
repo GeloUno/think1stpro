@@ -123,7 +123,7 @@ export default function FieldCalendar({
 
   return (
     <div
-      className={`rounded-xl border border-accent bg-white shadow-sm overflow-hidden ${className}`}
+      className={`rounded-md border border-accent bg-white shadow-sm overflow-hidden ${className}`}
     >
       <Header anchor={anchor} onPrev={goPrev} onNext={goNext} />
       <Week />

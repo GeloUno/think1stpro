@@ -2,7 +2,7 @@ import FieldCalendarTime from './FieldCalendarTime';
 import FieldPhoto from './FieldPhoto';
 import FieldText from './FieldText';
 import Button from './ui/Button';
-import FieldSlider from './ui/FieldSlider';
+import FieldSlider from './FieldSlider';
 import Title from './ui/Title';
 import useFormContext from './../hooks/useFormContext';
 import { useSubmitApplication } from './../hooks/useSubmitApplication';

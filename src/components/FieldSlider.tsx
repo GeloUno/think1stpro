@@ -1,5 +1,5 @@
-import InputSlider from './slider/InputSlider';
-import Label from './Label';
+import InputSlider from './ui/slider/InputSlider';
+import Label from './ui/Label';
 
 type FieldSliderProps = {
   id: string;
@@ -21,7 +21,7 @@ export default function FieldSlider({
   onChange,
 }: FieldSliderProps) {
   return (
-    <div>
+    <div className="w-full mb-8">
       <Label label={label} htmlForm={id} />
       <InputSlider
         min={min}

@@ -1,4 +1,4 @@
-import { holidaysApi } from '../api/clientHoliday';
+import { getHolidays } from '../api/getHolidays';
 
 export type ApiNinjasHoliday = {
   country: string;
@@ -14,7 +14,7 @@ export type DayType = 'WORKDAY' | 'NATIONAL_HOLIDAY' | 'OBSERVANCE';
 export type DayInfo = { type: DayType; name?: string };
 
 export async function fetchHolidays() {
-  const { data } = await holidaysApi.get<ApiNinjasHoliday[]>('/holidays');
+  const { data } = await getHolidays.get<ApiNinjasHoliday[]>('/holidays');
   return data;
 }
 

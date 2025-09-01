@@ -4,19 +4,35 @@ import FieldText from './FieldText';
 import Button from './ui/Button';
 import FieldSlider from './ui/FieldSlider';
 import Title from './ui/Title';
-
 import useFormContext from './../hooks/useFormContext';
+import { useSubmitApplication } from './../hooks/useSubmitApplication';
 
 const TIMES = ['12:00', '14:00', '16:30', '18:30', '20:00'];
 
 function FieldForm() {
-  const { values, errors, setField, setFocused, validateAll, canSubmit } =
-    useFormContext();
-  const submit = (e: React.FormEvent) => {
+  const {
+    values,
+    errors,
+    setField,
+    setFocused,
+    validateAll,
+    canSubmit,
+    reset,
+  } = useFormContext();
+
+  const { mutateAsync, isPending, error } = useSubmitApplication();
+
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateAll()) return;
+    try {
+      await mutateAsync(values);
 
-    console.log('SEND', values);
+      console.log('SEND', values);
+      reset();
+    } catch {
+      console.error('SEND', values, error);
+    }
   };
 
   return (
@@ -86,7 +102,7 @@ function FieldForm() {
         }}
       />
 
-      <Button type="submit" inactive={!canSubmit} className="mt-4">
+      <Button type="submit" inactive={!canSubmit || isPending} className="mt-4">
         Send Application
       </Button>
     </form>

@@ -1,35 +1,37 @@
 import InputSlider from './slider/InputSlider';
 import Label from './Label';
 
-interface FieldSliderProps {
+type FieldSliderProps = {
   id: string;
   label: string;
   min: number;
   max: number;
   step: number;
-  defaultValue: number;
-}
+  value: number;
+  onChange: (value: number) => void;
+};
 
-function FieldSlider({
+export default function FieldSlider({
   id,
   label,
   min,
   max,
   step,
-  defaultValue,
+  value,
+  onChange,
 }: FieldSliderProps) {
   return (
     <div>
       <Label label={label} htmlForm={id} />
       <InputSlider
         min={min}
-        step={step}
         max={max}
-        defaultValue={defaultValue}
+        step={step}
+        value={value}
+        onChange={onChange}
         label={label}
+        id={id}
       />
     </div>
   );
 }
-
-export default FieldSlider;

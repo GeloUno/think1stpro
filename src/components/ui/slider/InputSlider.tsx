@@ -1,20 +1,26 @@
-import { useState } from 'react';
 import './inputSlider.css';
 
 interface InputSliderProps {
+  id: string;
   label: string;
   min: number;
   max: number;
   step: number;
-  defaultValue: number;
+  value: number;
+  onChange(move: number): void;
 }
 
-function InputSlider({ min, max, step, defaultValue }: InputSliderProps) {
-  const [value, setValue] = useState(defaultValue);
-
+function InputSlider({
+  id,
+  min,
+  max,
+  step,
+  value,
+  onChange,
+}: InputSliderProps) {
   const handle = (v: number) => {
     const clamped = Math.min(max, Math.max(min, v));
-    setValue(clamped);
+    onChange(clamped);
   };
   return (
     <div className="w-full">
@@ -33,6 +39,7 @@ function InputSlider({ min, max, step, defaultValue }: InputSliderProps) {
         }
       >
         <input
+          id={id}
           type="range"
           min={min}
           max={max}

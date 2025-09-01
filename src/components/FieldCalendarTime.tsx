@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import FieldCalendar from './calendar/FieldCalendar';
 import FieldTime from './calendar/FieldTime';
 import InfoCircleIcon from '../icons/InfoCircleIcon';
@@ -22,12 +22,25 @@ export default function FieldCalendarTime({
   getDayInfo,
   className = '',
 }: FieldCalendarTimeProps) {
-  const [date, setDate] = useState<Date | null>(defaultDate);
-  const [time, setTime] = useState<string | null>(defaultTime);
-  const [anchor, setAnchor] = useState<Date>(defaultDate ?? new Date());
+  const [date, setDate] = useState<Date | null>(defaultDate ?? null);
+  const [time, setTime] = useState<string | null>(defaultTime ?? null);
+  const [anchor, setAnchor] = useState<Date>(new Date());
+
+  useEffect(() => {
+    if (defaultDate instanceof Date) {
+      setDate(defaultDate);
+      setAnchor(new Date(defaultDate.getFullYear(), defaultDate.getMonth(), 1));
+    } else if (defaultDate === null) {
+      setDate(null);
+      setAnchor(new Date());
+    }
+  }, [defaultDate]);
+
+  useEffect(() => {
+    setTime(defaultTime ?? null);
+  }, [defaultTime]);
 
   const { resolver } = useHolidaysResolver();
-
   const resolveDayInfo = useMemo(
     () => getDayInfo ?? resolver,
     [getDayInfo, resolver]
@@ -58,6 +71,7 @@ export default function FieldCalendarTime({
     >
       <div className="w-[240px]">
         <div className="text-xs text-primary-text mb-1">Date</div>
+
         <FieldCalendar
           value={date}
           onChange={handleDate}

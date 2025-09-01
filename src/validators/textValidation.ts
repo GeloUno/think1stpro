@@ -1,5 +1,5 @@
 export default function textValidation(value: string, fieldName: string) {
-  if (value.trim()) {
+  if (!value.trim()) {
     return `${fieldName} is required`;
   }
   if (value.length < 2) {

@@ -21,7 +21,7 @@ export default function FieldSlider({
   onChange,
 }: FieldSliderProps) {
   return (
-    <div className="w-full mb-10">
+    <div className="w-full mb-8">
       <Label label={label} htmlForm={id} />
       <InputSlider
         min={min}
